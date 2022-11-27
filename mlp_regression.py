@@ -1,12 +1,11 @@
-# Biblioteca para carregar o arquivo csv e manipular seus dados
-import pandas as pd
-
 # Bibliotecas para a criação da rede neural MLP
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error
 from sklearn.neural_network import MLPRegressor
 
+from utils.utils import load_data
 from utils.utils import print_regressor_metrics
+
+#===========================================================================================
 
 def main():
     # Treina e testa o modelo da rede neural MLP para regressão
@@ -43,17 +42,8 @@ def main():
 
     #=============================================================================================
 
-    # Carrega o arquivo csv
-    sinais_vitais = pd.read_csv('data/sinais_vitais.csv')
-
-    # Criar uma matriz apenas com as colunas aPA, pulso, resp e grav
-    sinais_vitais = sinais_vitais.loc[:, ['qPA', 'pulso', 'resp', 'grav']]
-
-    # Cria uma matriz contendo apenas os valores de entrada
-    input_data = sinais_vitais.loc[:, ['qPA', 'pulso', 'resp']]
-
-    # Cria uma matriz apenas com os valores de saída
-    output_values = sinais_vitais.loc[:, ['grav']]
+    # Carrega o arquivo csv em valores de entrada e de saída
+    input_data, output_values = load_data('data/sinais_vitais.csv', ['qPA', 'pulso', 'resp'], ['grav'])
 
     # Separa os dados de entrada e saída em conjuntos de dados para treinamento e para teste
     x_train, x_test, y_train, y_test = train_test_split(input_data, output_values, test_size=0.3)

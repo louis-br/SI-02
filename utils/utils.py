@@ -2,8 +2,6 @@
 import pandas as pd
 
 # Bibliotecas para a criação da árvore de decisão
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.model_selection import train_test_split
 from sklearn.tree import export_graphviz
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
@@ -14,6 +12,21 @@ import graphviz
 
 # Biblioteca para plotar um gráfico em 3D dos dados 
 import matplotlib.pyplot as plt
+
+#===========================================================================================
+
+def load_data(input_file, input_columns, output_columns):
+    # Carrega o arquivo csv
+    sinais_vitais = pd.read_csv(input_file)
+
+    # Cria uma matriz contendo apenas os valores de entrada
+    input_data = sinais_vitais.loc[:, input_columns]
+
+    # Cria uma matriz apenas com os valores de saída
+    output_data = sinais_vitais.loc[:, output_columns]
+
+    # Retorna os dados de entrada e saída
+    return input_data, output_data
 
 #===========================================================================================
 
