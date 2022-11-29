@@ -4,6 +4,7 @@ from sklearn.neural_network import MLPClassifier
 
 from utils.utils import load_data
 from utils.utils import print_classifier_metrics
+from utils.utils import plot_results_graph
 
 #===========================================================================================
 
@@ -67,6 +68,9 @@ def main():
 
     # Imprime a acurácia, a matriz de confusão e outras métricas
     print_classifier_metrics(classifier, x_test, y_test, test_results)
+
+    # Plota o gráfico em 3D dos dados
+    plot_results_graph('risco', x_test, y_test, test_results, tolerance=0)
 
 #===========================================================================================
 

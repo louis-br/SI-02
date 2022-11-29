@@ -1,5 +1,6 @@
 # Biblioteca para carregar o arquivo csv e manipular seus dados
 import pandas as pd
+import numpy as np
 
 # Bibliotecas para a criação da árvore de decisão
 from sklearn.tree import export_graphviz
@@ -82,6 +83,26 @@ def plot_graph(input_data, output_classes):
     graph = plt.figure(figsize=(12, 12))
     ax = graph.add_subplot(projection='3d')
     ax.scatter(input_data.loc[:,'qPA'], input_data.loc[:,'pulso'], input_data.loc[:,'resp'], s=30, c=output_classes)
+    plt.show()
+    
+#===========================================================================================
+
+def plot_results_graph(out_column, x_test, y_test, results, tolerance=10):
+    # Plota um gráfico em 3D representando as colunas aPA, pulso e resp, 
+    # apresenta os dados das classes possíveis como uma variação da cor dos pontos no gráfico,
+    # as predições erradas (fora da tolerância) aparecem como um 'x'. 
+
+    results = np.isclose(y_test[out_column], results, atol=tolerance)
+    x_correct = x_test[results]
+    y_correct = y_test[results]
+    results = ~results
+    x_incorrect = x_test[results]
+    y_incorrect = y_test[results]
+    
+    graph = plt.figure(figsize=(12, 12))
+    ax = graph.add_subplot(projection='3d')
+    ax.scatter(x_correct['qPA'], x_correct['pulso'], x_correct['resp'], s=30, c=y_correct, marker='o')
+    ax.scatter(x_incorrect['qPA'], x_incorrect['pulso'], x_incorrect['resp'], s=30, c=y_incorrect, marker='x')
     plt.show()
     
 #===========================================================================================

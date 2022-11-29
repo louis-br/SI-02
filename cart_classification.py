@@ -6,6 +6,7 @@ from utils.utils import load_data
 from utils.utils import print_classifier_metrics
 from utils.utils import build_visual_decision_tree
 from utils.utils import plot_graph
+from utils.utils import plot_results_graph
 
 #===========================================================================================
 
@@ -34,7 +35,9 @@ def main():
     build_visual_decision_tree(tree, input_data)
 
     # Plota o gráfico em 3D dos dados
-    plot_graph(input_data, output_classes)
+    plot_results_graph('risco', x_test, y_test, test_results, tolerance=0)
+    #plot_graph(input_data, output_classes)
+
 
 #===========================================================================================
 
