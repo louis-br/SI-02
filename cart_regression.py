@@ -6,6 +6,7 @@ from utils.utils import load_data
 from utils.utils import print_regressor_metrics
 from utils.utils import plot_graph
 from utils.utils import plot_results_graph
+from utils.utils import save_model
 
 #===========================================================================================
 
@@ -33,6 +34,9 @@ def main():
     # Plota o gráfico em 3D dos dados
     plot_results_graph('grav', x_test, y_test, test_results)
     #plot_graph(input_data, output_values)
+    
+    # Salva o modelo
+    save_model(regressor, 'models/cart_regressor')
 
 
 #===========================================================================================
