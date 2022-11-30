@@ -7,6 +7,7 @@ from utils.utils import print_classifier_metrics
 from utils.utils import build_visual_decision_tree
 from utils.utils import plot_graph
 from utils.utils import plot_results_graph
+from utils.utils import save_model
 
 #===========================================================================================
 
@@ -37,7 +38,9 @@ def main():
     # Plota o gráfico em 3D dos dados
     plot_results_graph('risco', x_test, y_test, test_results, tolerance=0)
     #plot_graph(input_data, output_classes)
-
+    
+    # Salva o modelo
+    save_model(classifier, 'models/cart_classifier')
 
 #===========================================================================================
 
