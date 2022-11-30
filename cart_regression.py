@@ -36,7 +36,7 @@ def main():
     #plot_graph(input_data, output_values)
     
     # Salva o modelo
-    save_model(regressor, 'models/cart_regressor')
+    save_model(regressor, 'models/cart_regressor', x_test, y_test)
 
 
 #===========================================================================================
