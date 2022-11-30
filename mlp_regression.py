@@ -5,6 +5,7 @@ from sklearn.neural_network import MLPRegressor
 from utils.utils import load_data
 from utils.utils import print_regressor_metrics
 from utils.utils import plot_results_graph
+from utils.utils import save_model
 
 #===========================================================================================
 
@@ -71,6 +72,10 @@ def main():
 
     # Plota o gráfico em 3D dos dados
     plot_results_graph('grav', x_test, y_test, test_results)
+    
+    # Salva o modelo
+    save_model(regressor, 'models/mlp_regressor')
+    
 #===========================================================================================
 
 if __name__ == "__main__":
