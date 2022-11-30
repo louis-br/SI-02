@@ -5,6 +5,7 @@ from sklearn.neural_network import MLPClassifier
 from utils.utils import load_data
 from utils.utils import print_classifier_metrics
 from utils.utils import plot_results_graph
+from utils.utils import save_model
 
 #===========================================================================================
 
@@ -71,6 +72,9 @@ def main():
 
     # Plota o gráfico em 3D dos dados
     plot_results_graph('risco', x_test, y_test, test_results, tolerance=0)
+    
+    # Salva o modelo
+    save_model(classifier, 'models/mlp_classifier')
 
 #===========================================================================================
 
