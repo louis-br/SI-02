@@ -1,0 +1,31 @@
+Modelo Regressao: cart_regressor
+
+Acuracia da Regressao: 
+1.0
+
+RSME da Regressao: 
+0.0
+
+----------------------------------------------------
+
+Modelo Classificacao: cart_classifier
+
+Acuracia da Classificacao: 
+0.4
+
+Precision, Recall e F-Score da Classificao: 
+              precision    recall  f1-score   support
+
+           2       0.67      0.67      0.67         3
+           3       0.00      0.00      0.00         2
+           4       0.00      0.00      0.00         0
+
+    accuracy                           0.40         5
+   macro avg       0.22      0.22      0.22         5
+weighted avg       0.40      0.40      0.40         5
+
+
+Matriz de Confusao da Classificacao: 
+[[2 1 0]
+ [1 0 1]
+ [0 0 0]]

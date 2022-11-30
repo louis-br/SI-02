@@ -1,6 +1,6 @@
 import pandas as pd
 from joblib import load
-from util.util import print_classifier_metrics, print_regressor_metrics, save_metrics
+from utils.utils import print_classifier_metrics, print_regressor_metrics, save_metrics
 
 def main():
     # Carrega os dados de teste enviados pelo professor e testa-os em cada modelo salvo
