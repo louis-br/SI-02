@@ -49,8 +49,11 @@ def print_classifier_metrics(classifier, x_test, y_test, test_results):
     # Imprime a matriz de confusão 
     print('\n[ Matriz de Confusão ]\n')
     print(confusion_matrix(y_test, test_results))
-    #plot_confusion_matrix(classifier, x_test, y_test)
-    #plt.show()
+    
+    # Mostra a matriz de confusão de forma gráfica
+    plot_confusion_matrix(classifier, x_test, y_test)
+    plt.show()
+    
     print('\n-------------------------------------------------------------------\n')
 
 #===========================================================================================
