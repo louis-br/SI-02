@@ -40,7 +40,7 @@ def main():
     #plot_graph(input_data, output_classes)
     
     # Salva o modelo
-    save_model(classifier, 'models/cart_classifier', x_test, y_test)
+    save_model(classifier, 'models/cart_classifier', x_test, y_test, test_results, 'classification')
 
 #===========================================================================================
 

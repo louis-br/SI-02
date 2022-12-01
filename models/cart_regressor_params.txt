@@ -1,4 +1,6 @@
-acuracia: 0.9390346692377206
+acuracia: 0.9279968287576634
+
+19.65299120371966
 
 ccp_alpha: 0.0
 criterion: squared_error

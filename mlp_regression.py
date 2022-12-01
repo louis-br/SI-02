@@ -74,7 +74,7 @@ def main():
     plot_results_graph('grav', x_test, y_test, test_results)
     
     # Salva o modelo
-    save_model(regressor, 'models/mlp_regressor', x_test, y_test)
+    save_model(regressor, 'models/mlp_regressor', x_test, y_test, test_results, 'regression')
     
 #===========================================================================================
 

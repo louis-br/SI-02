@@ -122,12 +122,21 @@ def load_model(file_name):
 
 #===========================================================================================
 
-def save_model(model, file_name, x_test, y_test):
+def save_model(model, file_name, x_test, y_test, test_results, reg_or_class):
     file_name = file_name.replace('.joblib', '')
     dump(model, file_name + '.joblib')
 
     with open(file_name + '_params.txt', 'w') as file:
         file.write('acuracia: ' + str(model.score(x_test, y_test)) + '\n\n')
+        if reg_or_class == 'regression':
+            file.write(str(mean_squared_error(y_test, test_results)))
+        else:
+            file.write(str(classification_report(y_test, test_results)))
+            file.write('\n\n')
+            file.write(str(confusion_matrix(y_test, test_results)))
+
+        file.write('\n\n')
+
         params = model.get_params()
         for key in params:
             file.write(key + ': ' + str(params[key]) + '\n')

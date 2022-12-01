@@ -74,7 +74,7 @@ def main():
     plot_results_graph('risco', x_test, y_test, test_results, tolerance=0)
     
     # Salva o modelo
-    save_model(classifier, 'models/mlp_classifier', x_test, y_test)
+    save_model(classifier, 'models/mlp_classifier', x_test, y_test, test_results, 'classification')
 
 #===========================================================================================
 
