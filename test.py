@@ -12,13 +12,13 @@ def main():
 
     # Carrega os dados enviados pelo professor
     # Dados de input qPA, pulso e resp
-    test_input = load_test_data('test_data/input_data.csv', 'input')
+    test_input = load_test_data('test_data/test_data.csv', 'input')
 
     # Carrega os dados de output da coluna grav
-    test_grav = load_test_data('test_data/output_data.csv', 'grav')
+    test_grav = load_test_data('test_data/test_data.csv', 'grav')
 
     # Carrega os dados de output da coluna risco
-    test_risco = load_test_data('test_data/output_data.csv', 'risco')
+    test_risco = load_test_data('test_data/test_data.csv', 'risco')
 
     # Carrega cada um dos quatro modelos salvos
     cart_regression_model = load_model('models/' + cart_regression_model_name)

@@ -12,6 +12,10 @@ from utils.utils import save_model
 #===========================================================================================
 
 def main():
+    for i in range(5):
+        run_cart_classification(i + 1)
+
+def run_cart_classification(i):
     # Treina e testa o modelo da árvore de decisão usando a técnica CART para classificação
 
     # Carrega o arquivo csv em valores de entrada e de saída
@@ -21,7 +25,7 @@ def main():
     x_train, x_test, y_train, y_test = train_test_split(input_data, output_classes, test_size=0.3)
 
     # Inicializa o classificador CART com o método gini 
-    classifier = DecisionTreeClassifier(criterion='gini')
+    classifier = DecisionTreeClassifier(criterion='gini', max_depth=12)
 
     # Executa o treinamento do modelo, criando a árvore de decisão
     tree = classifier.fit(x_train.values, y_train)
@@ -33,14 +37,14 @@ def main():
     print_classifier_metrics(classifier, x_test, y_test, test_results)
 
     # Cria uma representação gráfica da árvore de decisão encontrada e salva-a como pdf
-    build_visual_decision_tree(tree, input_data)
+    #build_visual_decision_tree(tree, input_data)
 
     # Plota o gráfico em 3D dos dados
-    plot_results_graph('risco', x_test, y_test, test_results, tolerance=0)
+    #plot_results_graph('risco', x_test, y_test, test_results, tolerance=0)
     #plot_graph(input_data, output_classes)
     
     # Salva o modelo
-    save_model(classifier, 'models/cart_classifier', x_test, y_test, test_results, 'classification')
+    save_model(classifier, f'models/cart/classification/4/{i}', x_test, y_test, test_results, 'classification')
 
 #===========================================================================================
 

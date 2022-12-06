@@ -10,13 +10,18 @@ from utils.utils import save_model
 #===========================================================================================
 
 def main():
+    for i in range(5):
+        run_mlp_regression(i + 1)
+
+def run_mlp_regression(i):
+    folder = '1'
     # Treina e testa o modelo da rede neural MLP para regressão
 
     # Inicializa as variáveis que serão utilizadas no modelo regressor:
     #=============================================================================================
 
     # Número de perceptrons por camada
-    hidden_layer_sizes = (80, 40, 20)
+    hidden_layer_sizes = (200)
 
     # Número máximo de iterações 
     max_iter = 2000
@@ -31,7 +36,7 @@ def main():
     solver = "adam"
 
     # Função de ativação
-    activation = "tanh"
+    activation = "relu"
 
     # Forma com que o learning_rate_init será regulado, ou não, a cada iteração
     learning_rate = "constant"
@@ -67,14 +72,16 @@ def main():
     # Testa o modelo treinado com dados de teste
     test_results = regressor.predict(x_test)
 
+    train_results = regressor.predict(x_train)
+
     # Imprime a acurácia e o RSME encontrados
     print_regressor_metrics(regressor, x_test, y_test, test_results)
 
     # Plota o gráfico em 3D dos dados
-    plot_results_graph('grav', x_test, y_test, test_results)
+    #plot_results_graph('grav', x_test, y_test, test_results)
     
     # Salva o modelo
-    save_model(regressor, 'models/mlp_regressor', x_test, y_test, test_results, 'regression')
+    save_model(regressor, f'models/mlp/regression/{folder}/{i}', x_test, y_test, test_results, 'regression', y_train, train_results)
     
 #===========================================================================================
 

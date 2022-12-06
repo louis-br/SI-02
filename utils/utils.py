@@ -8,6 +8,7 @@ from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import plot_confusion_matrix
+from sklearn.metrics import f1_score
 
 # Biblioteca para criar um gráfico da árvore de decisão e salvá-lo como pdf
 import graphviz
@@ -51,8 +52,8 @@ def print_classifier_metrics(classifier, x_test, y_test, test_results):
     print(confusion_matrix(y_test, test_results))
     
     # Mostra a matriz de confusão de forma gráfica
-    plot_confusion_matrix(classifier, x_test, y_test)
-    plt.show()
+    #plot_confusion_matrix(classifier, x_test, y_test)
+    #plt.show()
     
     print('\n-------------------------------------------------------------------\n')
 
@@ -122,16 +123,18 @@ def load_model(file_name):
 
 #===========================================================================================
 
-def save_model(model, file_name, x_test, y_test, test_results, reg_or_class):
+def save_model(model, file_name, x_test, y_test, test_results, reg_or_class, y_train=None, train_results=None):
     file_name = file_name.replace('.joblib', '')
     dump(model, file_name + '.joblib')
 
     with open(file_name + '_params.txt', 'w') as file:
         file.write('acuracia: ' + str(model.score(x_test, y_test)) + '\n\n')
         if reg_or_class == 'regression':
+            file.write(str(mean_squared_error(y_train, train_results)))
+            file.write('\n\n')
             file.write(str(mean_squared_error(y_test, test_results)))
         else:
-            file.write(str(classification_report(y_test, test_results)))
+            file.write(str(f1_score(y_test, test_results, average='weighted')))
             file.write('\n\n')
             file.write(str(confusion_matrix(y_test, test_results)))
 

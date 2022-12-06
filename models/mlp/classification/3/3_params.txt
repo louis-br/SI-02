@@ -1,0 +1,32 @@
+acuracia: 0.7577777777777778
+
+0.75474419497248
+
+[[ 47  20   0   0]
+ [ 29 221   7   0]
+ [  0  45  67   7]
+ [  0   0   1   6]]
+
+activation: tanh
+alpha: 0.0001
+batch_size: auto
+beta_1: 0.9
+beta_2: 0.999
+early_stopping: False
+epsilon: 1e-08
+hidden_layer_sizes: (200, 100, 50)
+learning_rate: constant
+learning_rate_init: 0.0001
+max_fun: 15000
+max_iter: 2000
+momentum: 0.9
+n_iter_no_change: 15
+nesterovs_momentum: True
+power_t: 0.5
+random_state: None
+shuffle: True
+solver: adam
+tol: 1e-05
+validation_fraction: 0.1
+verbose: 1
+warm_start: False

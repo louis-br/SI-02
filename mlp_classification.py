@@ -10,13 +10,20 @@ from utils.utils import save_model
 #===========================================================================================
 
 def main():
+    for i in range(5):
+        run_mlp_classification(i + 1)
+    
+
+def run_mlp_classification(i):
+
+    folder = '1'
     # Treina e testa o modelo da rede neural MLP para classificação
 
     # Inicializa as variáveis que serão utilizadas no modelo classificador:
     #=============================================================================================
 
     # Número de perceptrons por camada
-    hidden_layer_sizes = (100, 50, 25)
+    hidden_layer_sizes = (200, 100, 50)
 
     # Número máximo de iterações 
     max_iter = 2000
@@ -25,7 +32,7 @@ def main():
     tol = 0.00001
 
     # Taxa de aprendizagem
-    learning_rate_init = 0.001
+    learning_rate_init = 0.0001
 
     # O tipo de algoritmo utilizado para a otimização da descida de gradiente
     solver = "adam"
@@ -71,10 +78,10 @@ def main():
     print_classifier_metrics(classifier, x_test, y_test, test_results)
 
     # Plota o gráfico em 3D dos dados
-    plot_results_graph('risco', x_test, y_test, test_results, tolerance=0)
+    #plot_results_graph('risco', x_test, y_test, test_results, tolerance=0)
     
     # Salva o modelo
-    save_model(classifier, 'models/mlp_classifier', x_test, y_test, test_results, 'classification')
+    save_model(classifier, f'models/mlp/classification/{folder}/{i}', x_test, y_test, test_results, 'classification')
 
 #===========================================================================================
 

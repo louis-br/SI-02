@@ -11,6 +11,10 @@ from utils.utils import save_model
 #===========================================================================================
 
 def main():
+    for i in range(5):
+        run_cart_regression(i + 1)
+
+def run_cart_regression(i):
     # Treina e testa o modelo da árvore de decisão usando a técnica CART para regressão
 
     # Carrega o arquivo csv em valores de entrada e de saída
@@ -20,23 +24,24 @@ def main():
     x_train, x_test, y_train, y_test = train_test_split(input_data, output_values, test_size=0.3)
 
     # Inicializa o regressor CART
-    regressor = DecisionTreeRegressor()
+    regressor = DecisionTreeRegressor(max_depth=7)
 
     # Executa o treinamento do modelo, criando a árvore de decisão
     tree = regressor.fit(x_train, y_train)
 
     # Testa o modelo e armazena os resultados do teste
     test_results = regressor.predict(x_test)
+    train_results = regressor.predict(x_train)
 
     # Imprime as métricas de eficácia do modelo
     print_regressor_metrics(regressor, x_test, y_test, test_results)
 
     # Plota o gráfico em 3D dos dados
-    plot_results_graph('grav', x_test, y_test, test_results)
+    #plot_results_graph('grav', x_test, y_test, test_results)
     #plot_graph(input_data, output_values)
     
     # Salva o modelo
-    save_model(regressor, 'models/cart_regressor', x_test, y_test, test_results, 'regression')
+    save_model(regressor, f'models/cart/regression/4/{i}', x_test, y_test, test_results, 'regression', y_train, train_results)
 
 
 #===========================================================================================
